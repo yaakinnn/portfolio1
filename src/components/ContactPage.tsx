@@ -12,7 +12,7 @@ export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
 
-  const myEmail = 'yakinm100@gmail.com';
+  const myEmail = 'yakinworkspace@gmail.com';
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(myEmail);
@@ -42,10 +42,8 @@ export default function ContactPage() {
   };
 
   const socialLinks = [
-    { name: 'Instagram', handle: '@yakinmaulana', url: 'https://instagram.com/', icon: Instagram },
-    { name: 'LinkedIn', handle: 'Yakin Maulana', url: 'https://linkedin.com/', icon: Linkedin },
-    { name: 'YouTube', handle: 'Yakin Studio', url: 'https://youtube.com/', icon: Youtube },
-    { name: 'Vimeo', handle: 'Yakin Creative', url: 'https://vimeo.com/', icon: Mail }, // Standard placeholder icon
+    { name: 'Instagram', handle: '@yaakinnn', url: 'https://www.instagram.com/yaakinnn/', icon: Instagram },
+    { name: 'LinkedIn', handle: 'Mochammad Ainul Yakin', url: 'https://www.linkedin.com/in/mochammad-ainul-yakin-263329256', icon: Linkedin },
   ];
 
   return (
@@ -135,7 +133,7 @@ export default function ContactPage() {
               </div>
               <h3 className="font-display text-2xl font-bold uppercase text-white">Message Transmitted</h3>
               <p className="text-xs sm:text-sm text-onyx-300 font-sans tracking-wide max-w-sm">
-                Terima kasih, Yakin! Pesan Anda telah berhasil disubmit. Saya akan meninjau proposal Anda dan menghubungi Anda kembali kurang dari 24 jam.
+                Terima kasih, {formState.name}!  Pesan Anda telah berhasil disubmit. Saya akan meninjau proposal Anda dan menghubungi Anda kembali kurang dari 24 jam.
               </p>
               <button
                 onClick={() => setSubmitted(false)}

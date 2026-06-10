@@ -20,7 +20,7 @@ export interface Project {
   coverImageUrl: string; // Grid preview image
   videoPreviewUrl?: string; // Optional hover looping video (or GIF)
   aspectRatio?: 'video' | 'square' | 'vertical' | string; // Aspect ratio of the media to prevent cropping
-  images?: string[]; // Multiple images for photographic category
+  images?: string[]; // Multiple images for photography category
   featured?: boolean; // Set to true to display on home page under 'Selected Works'
 }
 

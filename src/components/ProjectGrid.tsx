@@ -34,7 +34,7 @@ export default function ProjectGrid({ projects, onSelectProject, activeCategory 
     switch (activeCategory) {
       case 'video-editing': return 'Video Editing';
       case 'motion-3d': return 'Motion & 3D Design';
-      case 'photography': return 'Photographic portfolio';
+      case 'photography': return 'Photography portfolio';
       default: return 'All Selected Works';
     }
   };

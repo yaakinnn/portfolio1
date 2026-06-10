@@ -173,7 +173,7 @@ export const projectsData: Project[] = [
     id: 'organic-light-refraction',
     title: 'Organic Light Refractions',
     category: 'photography',
-    description: 'A macro photographic exploration capturing how natural light interacts, bends, and decomposes when traveling through custom glass prisms and liquid crystals. Highlighting secondary rainbow color dispersals.',
+    description: 'A macro photography exploration capturing how natural light interacts, bends, and decomposes when traveling through custom glass prisms and liquid crystals. Highlighting secondary rainbow color dispersals.',
     client: 'Prism Glass Labs',
     role: 'Creative Photographer',
     year: '2025',
