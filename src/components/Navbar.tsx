@@ -27,7 +27,7 @@ export default function Navbar({ currentPath, onNavigate }: NavbarProps) {
     { label: 'WORKS', path: '#/' },
     { label: 'VIDEO EDITING', path: '#/video-editing' },
     { label: 'MOTION & 3D', path: '#/motion-3d' },
-    { label: 'PHOTOGRAPHY', path: '#/photography' },
+    { label: 'PHOTOGRAPHIC', path: '#/photography' },
     { label: 'ABOUT', path: '#/about' },
     { label: 'CONTACT', path: '#/contact' },
   ];
@@ -62,7 +62,7 @@ export default function Navbar({ currentPath, onNavigate }: NavbarProps) {
           id="btn-brand-home"
         >
           <span className="font-display font-bold tracking-tight text-sm text-white group-hover:text-onyx-300 transition-colors uppercase">
-            YAAKINNN
+            YAKIN MAULANA
           </span>
           <span className="text-white hover:text-white inline-block animate-spin-slow font-display text-base">
             ✲
@@ -134,11 +134,11 @@ export default function Navbar({ currentPath, onNavigate }: NavbarProps) {
           <div className="border-t border-white/[0.06] pt-6 flex flex-col gap-2.5">
             <p className="text-[10px] font-mono text-onyx-500 uppercase tracking-widest">Available for contract commissions</p>
             <a 
-              href="mailto:yakinworkspace@gmail.com"
+              href="mailto:yakinm100@gmail.com"
               className="text-sm font-mono text-white hover:text-onyx-300 flex items-center gap-1 underline underline-offset-4"
               id="mobile-nav-email-link"
             >
-              <span>yakinworkspace@gmail.com</span>
+              <span>yakinm100@gmail.com</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
             </a>
           </div>

@@ -129,7 +129,7 @@ export default function MediaEmbed({ project }: MediaEmbedProps) {
         </div>
       )}
 
-      {/* 3. High Fidelity photography Image Gallery */}
+      {/* 3. High Fidelity Photographic Image Gallery */}
       {embedType === 'images' && images && images.length > 0 && (
         <div className="flex flex-col w-full">
           {/* Main Visual Window with aspect ratio based on original photo */}
@@ -138,7 +138,7 @@ export default function MediaEmbed({ project }: MediaEmbedProps) {
               src={images[activeImageIndex]}
               alt={`${title} Slide ${activeImageIndex + 1}`}
               className="max-w-full max-h-full object-contain transition-all duration-500 cursor-pointer"
-              id={`photography-slide-${activeImageIndex}`}
+              id={`photographic-slide-${activeImageIndex}`}
               onClick={() => setIsFullscreenOpen(true)}
             />
             

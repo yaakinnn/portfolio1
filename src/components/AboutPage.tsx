@@ -70,7 +70,7 @@ export default function AboutPage() {
               <ArrowUpRight className="w-4 h-4" />
             </a>
             <a
-              href="mailto:yakinworkspace@gmail.com"
+              href="mailto:yakinm100@gmail.com"
               className="px-6 py-3 border border-white/10 hover:border-white/30 text-white rounded-full text-xs font-mono tracking-widest uppercase transition-all duration-300 hover:bg-white/[0.03] active:scale-95 cursor-pointer"
               data-cursor="EMAIL ME"
               id="about-email-cta"
@@ -86,7 +86,7 @@ export default function AboutPage() {
           <div className="relative overflow-hidden rounded-2xl aspect-[4/5] bg-onyx-900 border border-white/[0.08] shadow-2xl">
             <img
               src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80"
-              alt="Yaakinnn Creative portrait"
+              alt="Yakin Maulana Creative portrait"
               className="w-full h-full object-cover grayscale brightness-90 group-hover:brightness-100 group-hover:scale-102 transition-all duration-700"
               id="author-profile-photo"
             />

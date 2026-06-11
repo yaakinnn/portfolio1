@@ -105,6 +105,7 @@ export const projectsData: Project[] = [
     videoPreviewUrl: 'https://assets.mixkit.co/videos/preview/mixkit-neon-light-from-a-building-at-night-34282-large.mp4',
     aspectRatio: 'video', // 16:9
     featured: true, // Appears on Home page (Selected Works)
+    videoForm: 'long',
   },
   {
     id: 'fluidic-sculptures-2025',
@@ -154,6 +155,22 @@ export const projectsData: Project[] = [
     coverImageUrl: 'https://www.instagram.com/p/DOk8BN8kacO/',
     videoPreviewUrl: 'https://www.instagram.com/p/DOk8BN8kacO/',
     aspectRatio: 'vertical', // 9:16 vertical ratio for social reels
+    videoForm: 'short',
+  },
+  {
+    id: 'nordic-silence-documentary',
+    title: 'Echoes of the North',
+    category: 'video-editing',
+    description: 'A long-form atmospheric brand documentary exploring Arctic isolation and sustainable design ethos. Features slow, rhythmic pacing, ambient local field-recording soundscapes, and cinematic desaturated pastel grading.',
+    client: 'Nordic Travel Board',
+    role: 'Documentary Editor',
+    year: '2025',
+    embedType: 'youtube',
+    embedUrl: 'https://www.youtube.com/watch?v=ScMzIvxBSi4', // Clean lo-fi aesthetic placeholder
+    coverImageUrl: 'https://images.unsplash.com/photo-1517483000871-1dbf64a6e1c6?auto=format&fit=crop&w=1200&q=80',
+    videoPreviewUrl: 'https://assets.mixkit.co/videos/preview/mixkit-cold-stream-in-a-snowy-forest-34133-large.mp4',
+    aspectRatio: 'video',
+    videoForm: 'long',
   },
   {
     id: 'geometric-monoliths-3d',
@@ -173,7 +190,7 @@ export const projectsData: Project[] = [
     id: 'organic-light-refraction',
     title: 'Organic Light Refractions',
     category: 'photography',
-    description: 'A macro photography exploration capturing how natural light interacts, bends, and decomposes when traveling through custom glass prisms and liquid crystals. Highlighting secondary rainbow color dispersals.',
+    description: 'A macro photographic exploration capturing how natural light interacts, bends, and decomposes when traveling through custom glass prisms and liquid crystals. Highlighting secondary rainbow color dispersals.',
     client: 'Prism Glass Labs',
     role: 'Creative Photographer',
     year: '2025',
@@ -199,7 +216,8 @@ export const projectsData: Project[] = [
     embedUrl: 'https://www.tiktok.com/@tiktok/video/7108426002933796138', // Sample URL
     coverImageUrl: 'https://images.unsplash.com/photo-1551103782-8ab07afd45c1?auto=format&fit=crop&w=1200&q=80',
     videoPreviewUrl: 'https://assets.mixkit.co/videos/preview/mixkit-girl-walking-with-led-skateboards-at-night-42407-large.mp4',
-    aspectRatio: 'vertical' // 9:16
+    aspectRatio: 'vertical', // 9:16
+    videoForm: 'short',
   }
 ];
 

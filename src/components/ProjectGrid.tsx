@@ -17,7 +17,13 @@ export default function ProjectGrid({ projects, onSelectProject, activeCategory 
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [hoveredProjectId, setHoveredProjectId] = useState<string | null>(null);
   const [listHoverPos, setListHoverPos] = useState({ x: 0, y: 0 });
+  const [videoFilter, setVideoFilter] = useState<'all' | 'long' | 'short'>('all');
   const containerRef = useRef<HTMLDivElement>(null);
+
+  // Dynamic filter for Video-Editing category
+  const filteredProjects = activeCategory === 'video-editing'
+    ? (videoFilter === 'all' ? projects : projects.filter(p => p.videoForm === videoFilter))
+    : projects;
 
   // Track pointer for listing overlay
   const handleListMouseMove = (e: React.MouseEvent) => {
@@ -34,7 +40,7 @@ export default function ProjectGrid({ projects, onSelectProject, activeCategory 
     switch (activeCategory) {
       case 'video-editing': return 'Video Editing';
       case 'motion-3d': return 'Motion & 3D Design';
-      case 'photography': return 'Photography portfolio';
+      case 'photography': return 'Photographic portfolio';
       default: return 'All Selected Works';
     }
   };
@@ -78,7 +84,47 @@ export default function ProjectGrid({ projects, onSelectProject, activeCategory 
         </div>
       </div>
 
-      {projects.length === 0 ? (
+      {/* Video Content Segment Selector Pills - styled with ultra modern minimalism */}
+      {activeCategory === 'video-editing' && (
+        <div className="flex items-center gap-2 mb-10 overflow-x-auto scrollbar-none py-1 animate-fade-in">
+          <span className="text-[10px] font-mono tracking-widest text-onyx-500 uppercase mr-3 select-none">DURATION PRESET:</span>
+          <button
+            onClick={() => setVideoFilter('all')}
+            className={`px-4 py-1.5 rounded-full font-mono text-[9px] sm:text-[10px] tracking-widest uppercase transition-all duration-300 border cursor-pointer ${
+              videoFilter === 'all'
+                ? 'bg-white text-black border-white font-medium'
+                : 'text-onyx-400 bg-transparent border-white/[0.06] hover:border-white/20 hover:text-white'
+            }`}
+            id="filter-video-all"
+          >
+            All Clips ({projects.length})
+          </button>
+          <button
+            onClick={() => setVideoFilter('long')}
+            className={`px-4 py-1.5 rounded-full font-mono text-[9px] sm:text-[10px] tracking-widest uppercase transition-all duration-300 border cursor-pointer ${
+              videoFilter === 'long'
+                ? 'bg-white text-black border-white font-medium'
+                : 'text-onyx-400 bg-transparent border-white/[0.06] hover:border-white/20 hover:text-white'
+            }`}
+            id="filter-video-long"
+          >
+            Long Form / Cinema ({projects.filter(p => p.videoForm === 'long').length})
+          </button>
+          <button
+            onClick={() => setVideoFilter('short')}
+            className={`px-4 py-1.5 rounded-full font-mono text-[9px] sm:text-[10px] tracking-widest uppercase transition-all duration-300 border cursor-pointer ${
+              videoFilter === 'short'
+                ? 'bg-white text-black border-white font-medium'
+                : 'text-onyx-400 bg-transparent border-white/[0.06] hover:border-white/20 hover:text-white'
+            }`}
+            id="filter-video-short"
+          >
+            Short Form / Social ({projects.filter(p => p.videoForm === 'short').length})
+          </button>
+        </div>
+      )}
+
+      {filteredProjects.length === 0 ? (
         <div className="py-20 text-center border border-dashed border-white/10 rounded-2xl bg-onyx-900/45">
           <p className="font-mono text-sm text-onyx-400">No creative works added under this path yet.</p>
           <p className="font-mono text-xs text-onyx-600 mt-2">Add projects to /src/data/projects.ts to populate.</p>
@@ -86,7 +132,7 @@ export default function ProjectGrid({ projects, onSelectProject, activeCategory 
       ) : viewMode === 'grid' ? (
         /* --- GRID VIEW MODE --- */
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 animate-fade-in">
-          {projects.map((project, idx) => (
+          {filteredProjects.map((project, idx) => (
             <div
               key={project.id}
               onClick={() => onSelectProject(project.id)}
@@ -162,7 +208,7 @@ export default function ProjectGrid({ projects, onSelectProject, activeCategory 
           onMouseMove={handleListMouseMove}
           id="project-list-wrapper"
         >
-          {projects.map((project, idx) => (
+          {filteredProjects.map((project, idx) => (
             <div
               key={project.id}
               onClick={() => onSelectProject(project.id)}
@@ -216,7 +262,7 @@ export default function ProjectGrid({ projects, onSelectProject, activeCategory 
               }}
             >
               {/* Find the loaded project image & pre-embed video */}
-              {projects.map((proj) => {
+              {filteredProjects.map((proj) => {
                 if (proj.id !== hoveredProjectId) return null;
                 return (
                   <div key={proj.id} className="relative w-full h-full">
