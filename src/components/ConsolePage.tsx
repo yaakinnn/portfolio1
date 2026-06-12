@@ -635,7 +635,7 @@ export default function ConsolePage() {
                   EMBED TARGET / SHARING LINK
                 </label>
                 <input
-                  type="url"
+                  type="text"
                   value={projectForm.embedUrl || ''}
                   onChange={e => setProjectForm({ ...projectForm, embedUrl: e.target.value })}
                   placeholder="YouTube watch link, drive file link, Instagram reel link..."
@@ -660,11 +660,11 @@ export default function ConsolePage() {
               <div className="flex flex-col gap-2">
                 <label className="font-mono text-[9px] text-onyx-400 uppercase tracking-wider">GRID COVER IMAGE COVER URL *</label>
                 <input
-                  type="url"
+                  type="text"
                   required
                   value={projectForm.coverImageUrl || ''}
                   onChange={e => setProjectForm({ ...projectForm, coverImageUrl: e.target.value })}
-                  placeholder="https://images.unsplash.com/photo-..."
+                  placeholder="e.g. /assets/img/... or https://..."
                   className="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-3 placeholder:text-onyx-600 focus:outline-none focus:border-white transition-colors text-sm"
                 />
               </div>
@@ -674,10 +674,10 @@ export default function ConsolePage() {
                   VIDEO LOOP PREVIEW URL (.mp4 optional)
                 </label>
                 <input
-                  type="url"
+                  type="text"
                   value={projectForm.videoPreviewUrl || ''}
                   onChange={e => setProjectForm({ ...projectForm, videoPreviewUrl: e.target.value })}
-                  placeholder="A fast 1-5 second looping ambient clip link"
+                  placeholder="A fast 1-5 second looping ambient clip link (e.g. /assets/img/... or https://...)"
                   className="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-3 placeholder:text-onyx-600 focus:outline-none focus:border-white transition-colors text-sm"
                 />
               </div>
