@@ -3,36 +3,25 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+import { useState, useEffect } from 'react';
 import { ArrowUpRight, Award, Flame, Film, Palette, Cpu, Sparkles } from 'lucide-react';
-import { clientReviews } from '../data/projects';
+import { getStoredTimeline, getStoredReviews } from '../data/store';
+import { TimelineItem, ClientReview } from '../types';
 
 export default function AboutPage() {
+  const [experience, setExperience] = useState<TimelineItem[]>([]);
+  const [reviews, setReviews] = useState<ClientReview[]>([]);
+
+  useEffect(() => {
+    setExperience(getStoredTimeline());
+    setReviews(getStoredReviews());
+  }, []);
+
   const skills = [
     { name: 'Video Editing', icon: Film, tools: ['Adobe Premiere Pro', 'DaVinci Resolve', 'Avid Media Composer'] },
     { name: 'Motion Design', icon: Flame, tools: ['Adobe After Effects', 'Cinema 4D', 'Blender'] },
     { name: '3D Modeling & Rendering', icon: Palette, tools: ['Blender 4.0', 'Octane Render', 'Redshift'] },
     { name: 'Digital Art', icon: Cpu, tools: ['Photoshop', 'Illustrator', 'Figma'] }
-  ];
-
-  const experience = [
-    {
-      year: '2025 - Present',
-      role: 'Senior Motion & Video Director',
-      company: 'Metropolis Digital Studios',
-      description: 'Directing cinematic content and commercial video campaigns for global lifestyle brands. Leading a team of three editors and sound designers.'
-    },
-    {
-      year: '2023 - 2025',
-      role: 'Creative Motion Designer',
-      company: 'Dimension Studio Paris',
-      description: 'Designed and composite 3D fluid simulations and structural architectural installations for commercial spaces.'
-    },
-    {
-      year: '2021 - 2023',
-      role: 'Junior Video Editor',
-      company: 'French National Broadcast Corp.',
-      description: 'Assisted in offline video editing, audio synchronization, speed-ramping, and localized trailer color corrections.'
-    }
   ];
 
   return (
@@ -180,7 +169,7 @@ export default function AboutPage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {clientReviews.map((review, idx) => (
+          {reviews.map((review, idx) => (
             <div 
               key={idx}
               className="p-6 rounded-2xl bg-onyx-900 border border-white/[0.04] flex flex-col justify-between hover:bg-white/[0.02]"

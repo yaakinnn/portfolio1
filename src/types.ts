@@ -31,3 +31,10 @@ export interface ClientReview {
   company: string;
   comment: string;
 }
+
+export interface TimelineItem {
+  year: string;
+  role: string;
+  company: string;
+  description: string;
+}

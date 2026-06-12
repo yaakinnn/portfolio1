@@ -11,15 +11,22 @@ import ProjectGrid from './components/ProjectGrid';
 import ProjectDetail from './components/ProjectDetail';
 import AboutPage from './components/AboutPage';
 import ContactPage from './components/ContactPage';
-import { projectsData } from './data/projects';
+import { getStoredProjects } from './data/store';
+import ConsolePage from './components/ConsolePage';
 import { ArrowUp, Award, Clock } from 'lucide-react';
 
 export default function App() {
   const [currentHash, setCurrentHash] = useState<string>(window.location.hash || '#/');
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [currentTime, setCurrentTime] = useState('');
+  const [projects, setProjects] = useState<any[]>([]);
 
-  // 1. Synced Real-time UTC Clock (Improves high-end professional designer aesthetic)
+  // Load / Sync active projects dataset
+  useEffect(() => {
+    setProjects(getStoredProjects());
+  }, [currentHash]);
+
+  // 2. Synced Real-time UTC Clock (Improves high-end professional designer aesthetic)
   useEffect(() => {
     const updateTime = () => {
       const now = new Date();
@@ -74,13 +81,13 @@ export default function App() {
     // A. Project details route match: #/project/:id
     if (currentHash.startsWith('#/project/')) {
       const projectId = currentHash.replace('#/project/', '');
-      const project = projectsData.find((p) => p.id === projectId);
+      const project = projects.find((p) => p.id === projectId);
       
       if (project) {
         return (
           <ProjectDetail
             project={project}
-            allProjects={projectsData}
+            allProjects={projects}
             onNavigate={handleNavigate}
             onBack={handleBackToWorks}
           />
@@ -107,12 +114,14 @@ export default function App() {
         return <AboutPage />;
       case '#/contact':
         return <ContactPage />;
+      case '#/console':
+        return <ConsolePage />;
       
       // C. Filterable pages
       case '#/video-editing':
         return (
           <ProjectGrid
-            projects={projectsData.filter((p) => p.category === 'video-editing')}
+            projects={projects.filter((p) => p.category === 'video-editing')}
             onSelectProject={(slug) => handleNavigate(`#/project/${slug}`)}
             activeCategory="video-editing"
           />
@@ -120,7 +129,7 @@ export default function App() {
       case '#/motion-3d':
         return (
           <ProjectGrid
-            projects={projectsData.filter((p) => p.category === 'motion-3d')}
+            projects={projects.filter((p) => p.category === 'motion-3d')}
             onSelectProject={(slug) => handleNavigate(`#/project/${slug}`)}
             activeCategory="motion-3d"
           />
@@ -128,7 +137,7 @@ export default function App() {
       case '#/photography':
         return (
           <ProjectGrid
-            projects={projectsData.filter((p) => p.category === 'photography')}
+            projects={projects.filter((p) => p.category === 'photography')}
             onSelectProject={(slug) => handleNavigate(`#/project/${slug}`)}
             activeCategory="photography"
           />
@@ -139,7 +148,7 @@ export default function App() {
       default:
         return (
           <ProjectGrid
-            projects={projectsData.filter((p) => p.featured === true)}
+            projects={projects.filter((p) => p.featured === true)}
             onSelectProject={(slug) => handleNavigate(`#/project/${slug}`)}
             activeCategory="all"
           />
@@ -204,12 +213,21 @@ export default function App() {
           </div>
 
           {/* Time and Active State widgets */}
-          <div className="flex items-center gap-8 flex-wrap">
+          <div className="flex items-center gap-4 sm:gap-6 flex-wrap">
             <div className="flex items-center gap-2 text-[10px] font-mono text-onyx-400 tracking-wider">
               <Clock className="w-3.5 h-3.5 text-onyx-500" />
               <span>{currentTime || 'Syncing UTC time...'}</span>
             </div>
             
+            <a 
+              href="#/console"
+              className="text-[10px] font-mono text-yellow-400 hover:text-yellow-300 uppercase tracking-widest border border-yellow-400/25 hover:border-yellow-400/50 px-3.5 py-1.5 rounded-full transition-all flex items-center gap-1.5"
+              id="footer-console-trigger"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-yellow-400 animate-pulse"></span>
+              <span>CREATIVE CONSOLE (DB)</span>
+            </a>
+
             <a 
               href="mailto:yakinm100@gmail.com"
               className="text-[10px] font-mono text-white hover:text-onyx-300 uppercase tracking-widest border border-white/10 hover:border-white/30 px-3.5 py-1.5 rounded-full transition-all"
